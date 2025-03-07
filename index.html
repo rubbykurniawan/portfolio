@@ -121,6 +121,16 @@
             list-style: none;
             gap: 1.5rem;
         }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
 
         .nav-link {
             color: var(--text-color);
@@ -181,6 +191,35 @@
 
         .hero-content {
             max-width: 800px;
+        }
+        
+        .profile-pic-container {
+            margin: 0 auto 2rem;
+            position: relative;
+            width: 180px;
+            height: 180px;
+        }
+        
+        .profile-pic-border {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            padding: 4px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--bg-color);
+            transition: var(--transition);
         }
 
         .gradient-text {
@@ -356,13 +395,42 @@
             .gradient-text {
                 font-size: 2.5rem;
             }
+            
+            .profile-pic-container {
+                width: 150px;
+                height: 150px;
+            }
 
             .navbar {
                 padding: 1rem;
             }
-
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             .navbar-nav {
-                gap: 1rem;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--card-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 1001;
+            }
+            
+            .navbar-nav.active {
+                right: 0;
+            }
+            
+            .nav-link {
+                font-size: 1.2rem;
             }
         }
 
@@ -374,13 +442,9 @@
             .navbar-brand {
                 font-size: 1.2rem;
             }
-
+            
             .navbar-nav {
-                gap: 0.5rem;
-            }
-
-            .nav-link {
-                font-size: 0.9rem;
+                width: 80%;
             }
 
             .tech-stack-grid,
@@ -394,6 +458,9 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-brand">Rubby Kurniawan</div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul class="navbar-nav">
             <li><a href="#home" class="nav-link active">Home</a></li>
             <li><a href="#experience" class="nav-link">Experience</a></li>
@@ -411,6 +478,11 @@
     <section id="home">
         <div class="container">
             <div class="hero-content">
+                <div class="profile-pic-container">
+                    <div class="profile-pic-border">
+                        <img src="/api/placeholder/300/300" alt="Rubby Kurniawan" class="profile-pic">
+                    </div>
+                </div>
                 <h1 class="gradient-text">Rubby Kurniawan</h1>
                 <div class="typing-container">
                     <span class="typed-text"></span>
@@ -526,6 +598,16 @@
                     </div>
                     <div class="skill-percentage">80%</div>
                 </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <div class="tech-name">PHP Laravel</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80"></div>
+                    </div>
+                    <div class="skill-percentage">80%</div>
+                </div>
             </div>
         </div>
     </section>
@@ -581,12 +663,36 @@
         const cursorElement = document.querySelector('.cursor');
         const textToType = 'Backend Developer - Golang & Ruby on Rails';
         let charIndex = 0;
-
+        let isDeleting = false;
+        
         function typeText() {
-            if (charIndex < textToType.length) {
-                typedTextElement.textContent += textToType.charAt(charIndex);
+            // If deleting
+            if (isDeleting) {
+                typedTextElement.textContent = textToType.substring(0, charIndex);
+                charIndex--;
+                
+                // Once deletion is complete, start typing again
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    setTimeout(typeText, 500); // Wait before typing again
+                } else {
+                    setTimeout(typeText, 50); // Delete speed
+                }
+            } 
+            // If typing
+            else {
+                typedTextElement.textContent = textToType.substring(0, charIndex);
                 charIndex++;
-                setTimeout(typeText, 100);
+                
+                // Once typing is complete, wait before deleting
+                if (charIndex > textToType.length) {
+                    setTimeout(() => {
+                        isDeleting = true;
+                        typeText();
+                    }, 5000); // Wait 5 seconds with full text
+                } else {
+                    setTimeout(typeText, 100); // Typing speed
+                }
             }
         }
 
@@ -642,6 +748,50 @@
             });
         });
 
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navbarNav = document.querySelector('.navbar-nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navbarNav.classList.toggle('active');
+            
+            // Change icon based on menu state
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navbarNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking anywhere outside or on a nav link
+        document.addEventListener('click', (e) => {
+            if (
+                navbarNav.classList.contains('active') && 
+                !navbarNav.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target)
+            ) {
+                navbarNav.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navbarNav.classList.contains('active')) {
+                    navbarNav.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+        
         // Update active navigation based on scroll position
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
