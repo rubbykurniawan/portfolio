@@ -5,12 +5,67 @@ document.addEventListener('DOMContentLoaded', function() {
                 easing: 'ease-in-out',
                 once: true
             });
-            
+
             // Set initial active navigation
             updateActiveNavigation();
-            
+
             // Set initial theme icon
             updateThemeIcon();
+
+            // Initialize scroll progress bar
+            initScrollProgress();
+
+            // Initialize floating action buttons
+            initFloatingButtons();
+        });
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 1500);
+        });
+
+        // Scroll Progress Bar
+        function initScrollProgress() {
+            const progressBar = document.querySelector('.scroll-progress-bar');
+
+            window.addEventListener('scroll', () => {
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrolled = (window.scrollY / scrollHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+        }
+
+        // Floating Action Buttons
+        function initFloatingButtons() {
+            const scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('show');
+                } else {
+                    scrollToTopBtn.classList.remove('show');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
 
         // Typing effect for title
