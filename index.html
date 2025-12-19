@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     </style> -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Background Effects -->
     <div class="bg-animated">
@@ -49,7 +51,7 @@
             <div class="particle particle4"></div>
             <div class="particle particle5"></div>
         </div>
-        
+
         <div class="container home-container">
             <div class="home-content-wrapper">
                 <div class="profile-content" data-aos="fade-right">
@@ -59,36 +61,38 @@
                         </div>
                     </div>
                     <div class="profile-social-links">
-                        <a href="https://www.linkedin.com/in/rubby-kurniawan-85b739155" class="profile-social-link" title="LinkedIn">
+                        <a href="https://www.linkedin.com/in/rubby-kurniawan-85b739155" class="profile-social-link"
+                            title="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                         <a href="https://github.com/" class="profile-social-link" title="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.instagram.com/rubby_kurniawan_/" class="profile-social-link" title="Instagram">
+                        <a href="https://www.instagram.com/rubby_kurniawan_/" class="profile-social-link"
+                            title="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="hero-content" data-aos="fade-left">
                     <div class="intro-text">
                         <span class="greeting-text" id="dynamic-greeting">Hello, I'm</span>
                         <h1 class="gradient-text">Rubby Kurniawan</h1>
                     </div>
-                    
+
                     <div class="typing-container">
                         <span class="typed-text" id="profession-text"></span>
                         <span class="cursor"></span>
                     </div>
-                    
+
                     <div class="hero-description-container">
                         <p class="hero-description">
                             <span id="description-text"></span>
                             <span class="cursor-description"></span>
                         </p>
                     </div>
-                    
+
                     <div class="cta-buttons">
                         <a href="#contact" class="cta-btn primary-btn">
                             <i class="fas fa-envelope"></i> Contact Me
@@ -100,7 +104,7 @@
                             <i class="fas fa-file-download"></i> Download CV
                         </a> -->
                     </div>
-                    
+
                     <!-- <div class="tech-tags">
                         <span class="tech-tag">Golang</span>
                         <span class="tech-tag">Ruby on Rails</span>
@@ -110,7 +114,7 @@
                 </div>
             </div>
         </div>
-        
+
         <br><br><br><br><br><br>
         <div class="scroll-indicator">
             <a href="#experience" class="scroll-arrow bounce">
@@ -120,8 +124,8 @@
         </div>
     </section>
     <!-- Home Section -->
-    
-    
+
+
     <!-- Experience Section -->
     <section id="experience">
         <div class="container">
@@ -129,7 +133,8 @@
             <div class="experience-card" data-aos="fade-up">
                 <h3 class="experience-title">Senior Backend Developer</h3>
                 <div class="experience-date">5 Tahun | Product-Based Company</div>
-                <p>Sebagai Senior Backend Developer, saya telah berkontribusi pada berbagai modul backend untuk produk-produk unggulan perusahaan. Tanggung jawab saya meliputi:</p>
+                <p>Sebagai Senior Backend Developer, saya telah berkontribusi pada berbagai modul backend untuk
+                    produk-produk unggulan perusahaan. Tanggung jawab saya meliputi:</p>
                 <ul class="experience-list">
                     <li>Merancang dan mengembangkan API yang robust dan scalable</li>
                     <li>Mengimplementasikan mikroservis dengan Golang dan Ruby on Rails</li>
@@ -165,7 +170,8 @@
                         <h3 class="timeline-title">Langlangbuana University</h3>
                         <div class="timeline-subtitle">Bachelor of Information Technology</div>
                         <div class="timeline-date">2016 - 2023</div>
-                        <p>Mempelajari berbagai aspek teknologi informasi, pemrograman, dan pengembangan sistem. Fokus pada pengembangan aplikasi backend dan database management.</p>
+                        <p>Mempelajari berbagai aspek teknologi informasi, pemrograman, dan pengembangan sistem. Fokus
+                            pada pengembangan aplikasi backend dan database management.</p>
                     </div>
                 </div>
             </div>
@@ -287,10 +293,26 @@
     <section id="projects">
         <div class="container">
             <h2 data-aos="fade-right">Projects</h2>
-            <p class="section-description" data-aos="fade-up">Berikut adalah beberapa project yang telah saya kerjakan menggunakan berbagai teknologi dan framework.</p>
+            <p class="section-description" data-aos="fade-up">Berikut adalah beberapa project yang telah saya kerjakan
+                menggunakan berbagai teknologi dan framework.</p>
             <div class="projects-grid">
                 <div class="project-card" data-aos="fade-up">
-                    <img src="image/ara-core.png" alt="Automation Route Assignments (ARA)" class="project-img">
+                    <div class="stacked-images-container">
+                        <div class="stacked-images">
+                            <div class="stacked-image-item" data-index="0" onclick="openImagePopup(this)">
+                                <img src="image/ara-core.png" alt="ARA Core">
+                            </div>
+                            <div class="stacked-image-item" data-index="1" onclick="openImagePopup(this)">
+                                <img src="image/ara-set-zone.png" alt="ARA Set Zone">
+                            </div>
+                            <div class="stacked-image-item" data-index="2" onclick="openImagePopup(this)">
+                                <img src="image/ara-set-area.png" alt="ARA Set Area">
+                            </div>
+                        </div>
+                        <div class="image-count-badge">
+                            <i class="fas fa-images"></i> 3 Photos
+                        </div>
+                    </div>
                     <div class="project-content">
                         <h3 class="project-title">Automation Route Assignments (ARA) - (Core Module)</h3>
                         <div class="project-tags">
@@ -298,7 +320,10 @@
                             <span class="project-tag">PostgreSQL</span>
                             <span class="project-tag">Rest API</span>
                         </div>
-                        <p class="project-description">Membangun sistem pengaturan jadwal pada CMS serta penjadwalan otomatis yang terintegrasi dengan aplikasi mobile. Di dukung dengan Auto loading suggestion bagi user berdasarkan request tanggal pengiriman terdekat, total berat (Kg) & Volume (m3) pesanan dari setiap toko.</p>
+                        <p class="project-description">Membangun sistem pengaturan jadwal pada CMS serta penjadwalan
+                            otomatis yang terintegrasi dengan aplikasi mobile. Di dukung dengan Auto loading suggestion
+                            bagi user berdasarkan request tanggal pengiriman terdekat, total berat (Kg) & Volume (m3)
+                            pesanan dari setiap toko.</p>
                         <div class="project-links">
                             <a href="#" class="project-link">
                                 <i class="fas fa-external-link-alt"></i> Show
@@ -310,7 +335,19 @@
                     </div>
                 </div>
                 <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="image/ara-core.png" alt="Stock Card & Auto recalculate Hpp" class="project-img">
+                    <div class="stacked-images-container">
+                        <div class="stacked-images">
+                            <div class="stacked-image-item" data-index="0" onclick="openImagePopup(this)">
+                                <img src="image/KS-Product.png" alt="KS Product">
+                            </div>
+                            <div class="stacked-image-item" data-index="1" onclick="openImagePopup(this)">
+                                <img src="image/KS-Warehouse.png" alt="KS Warehouse">
+                            </div>
+                        </div>
+                        <div class="image-count-badge">
+                            <i class="fas fa-images"></i> 2 Photos
+                        </div>
+                    </div>
                     <div class="project-content">
                         <h3 class="project-title">Stock Card & Auto recalculate Hpp</h3>
                         <div class="project-tags">
@@ -319,7 +356,10 @@
                             <span class="project-tag">PostgreSQL</span>
                             <span class="project-tag">REST API</span>
                         </div>
-                        <p class="project-description">Development sebuah modul yang terintegrasi dengan seluruh trigger transaksi yang ada pada CMS, mobile dan scheduler. Dengan memperhitungkan dan recording perpindahan stok serta recalculate HPP sebagai basis harga jual yang mana terintegrasi dengan modul pricing.</p>
+                        <p class="project-description">Development sebuah modul yang terintegrasi dengan seluruh trigger
+                            transaksi yang ada pada CMS, mobile dan scheduler. Dengan memperhitungkan dan recording
+                            perpindahan stok serta recalculate HPP sebagai basis harga jual yang mana terintegrasi
+                            dengan modul pricing.</p>
                         <div class="project-links">
                             <a href="#" class="project-link">
                                 <i class="fas fa-external-link-alt"></i> Show
@@ -331,7 +371,22 @@
                     </div>
                 </div>
                 <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="image/ara-core.png" alt="Pricing" class="project-img">
+                    <div class="stacked-images-container">
+                        <div class="stacked-images">
+                            <div class="stacked-image-item" data-index="0" onclick="openImagePopup(this)">
+                                <img src="image/pricing-core.png" alt="Pricing Core">
+                            </div>
+                            <div class="stacked-image-item" data-index="1" onclick="openImagePopup(this)">
+                                <img src="image/pricing-approval.png" alt="Pricing Approval">
+                            </div>
+                            <div class="stacked-image-item" data-index="2" onclick="openImagePopup(this)">
+                                <img src="image/pricing-history.png" alt="Pricing History">
+                            </div>
+                        </div>
+                        <div class="image-count-badge">
+                            <i class="fas fa-images"></i> 3 Photos
+                        </div>
+                    </div>
                     <div class="project-content">
                         <h3 class="project-title">Pricing</h3>
                         <div class="project-tags">
@@ -339,7 +394,8 @@
                             <span class="project-tag">PostgreSQL</span>
                             <span class="project-tag">Rest API</span>
                         </div>
-                        <p class="project-description">Mengembangkan API Gateway yang andal dengan sistem autentikasi yang aman, termasuk fitur JWT, rate limiting, dan caching untuk mengoptimalkan performa.</p>
+                        <p class="project-description">Mengembangkan API Gateway yang andal dengan sistem autentikasi
+                            yang aman, termasuk fitur JWT, rate limiting, dan caching untuk mengoptimalkan performa.</p>
                         <div class="project-links">
                             <a href="#" class="project-link">
                                 <i class="fas fa-external-link-alt"></i> Show
@@ -351,16 +407,67 @@
                     </div>
                 </div>
                 <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="image/ara-core.png" alt="Brand Promotor Markrting (BPM)" class="project-img">
+                    <div class="stacked-images-container">
+                        <div class="stacked-images">
+                            <div class="stacked-image-item" data-index="0" onclick="openImagePopup(this)">
+                                <img src="image/bpm-schedule.png" alt="BPM Schedule">
+                            </div>
+                            <div class="stacked-image-item" data-index="1" onclick="openImagePopup(this)">
+                                <img src="image/bpm-ara.png" alt="BPM ARA">
+                            </div>
+                            <div class="stacked-image-item" data-index="2" onclick="openImagePopup(this)">
+                                <img src="image/bpm-assign-bp.png" alt="BPM Assign BP">
+                            </div>
+                        </div>
+                        <div class="image-count-badge">
+                            <i class="fas fa-images"></i> 3 Photos
+                        </div>
+                    </div>
                     <div class="project-content">
                         <h3 class="project-title">Brand Promotor Markrting (BPM)</h3>
                         <div class="project-tags">
                             <span class="project-tag">Golang</span>
-                            <span class="project-tag">JWT</span>
                             <span class="project-tag">PostgreSQL</span>
                             <span class="project-tag">Rest API</span>
                         </div>
-                        <p class="project-description">Mengembangkan API Gateway yang andal dengan sistem autentikasi yang aman, termasuk fitur JWT, rate limiting, dan caching untuk mengoptimalkan performa.</p>
+                        <p class="project-description">
+                            <span class="description-short">
+                                Project ini merupakan CMS berbasis Web dan Mobile yang saling terintegrasi, dikembangkan
+                                menggunakan Ruby on Rails dan Golang dengan PostgreSQL sebagai database utama. Sistem
+                                ini
+                                dirancang untuk mendukung pengelolaan operasional, pengumpulan data, serta analisis
+                                bisnis
+                                secara terstruktur dan efisien.
+                            </span>
+                            <span class="description-full" style="display: none;">
+                                Project ini merupakan CMS berbasis Web dan Mobile yang saling terintegrasi, dikembangkan
+                                menggunakan Ruby on Rails dan Golang dengan PostgreSQL sebagai database utama. Sistem
+                                ini
+                                dirancang untuk mendukung pengelolaan operasional, pengumpulan data, serta analisis
+                                bisnis
+                                secara terstruktur dan efisien.
+
+                                <br><br><strong>Fitur Utama</strong>
+                                <br>1. Manajemen Jadwal & Hari Libur
+                                <br>Mengelola jadwal operasional dan pengaturan hari libur yang terintegrasi untuk
+                                memastikan
+                                perencanaan aktivitas berjalan optimal.
+                                <br>2. Survey Produk & Kompetitor
+                                <br>Mengumpulkan data terkait produk, harga, dan promosi kompetitor sebagai dasar
+                                strategi
+                                penjualan dan pengambilan keputusan bisnis.
+                                <br>3. Survey Kepuasan Customer
+                                <br>Mengukur dan menganalisis tingkat kepuasan pelanggan untuk meningkatkan kualitas
+                                produk dan
+                                layanan.
+                                <br>4. Reporting
+                                <br>Menyajikan laporan hasil survey dan data operasional dalam bentuk ringkasan yang
+                                mudah
+                                dipahami untuk mendukung evaluasi dan pengambilan keputusan.
+                            </span>
+                            <br>
+                            <button class="read-more-btn" onclick="toggleDescription(this)">Read More</button>
+                        </p>
                         <div class="project-links">
                             <a href="#" class="project-link">
                                 <i class="fas fa-external-link-alt"></i> Show
@@ -432,6 +539,27 @@
         </div>
     </section>
 
+    <!-- Image Popup Lightbox -->
+    <div id="image-popup" class="image-popup-overlay">
+        <div class="image-popup-container">
+            <button class="popup-close-btn" onclick="closeImagePopup()">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="popup-nav-btn popup-prev" onclick="navigatePopupImage(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="popup-nav-btn popup-next" onclick="navigatePopupImage(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="popup-image-wrapper">
+                <img id="popup-image" src="" alt="">
+                <div class="popup-image-counter">
+                    <span id="popup-current-index">1</span> / <span id="popup-total-images">3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -464,4 +592,5 @@
         
     </script> -->
 </body>
+
 </html>

@@ -393,18 +393,18 @@ window.addEventListener('load', function() {
         el.style.opacity = '0';
         el.style.transition = 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out';
     });
-    
+
     // Initialize animations
     initElementsAnimation();
     initParallaxEffect();
     initDynamicGreeting();
-    
+
     // Start typing animations
     setTimeout(() => {
         typeProfession();
         setTimeout(typeDescription, 1500);
     }, 2000);
-    
+
     // Existing code for skill bars - keep this unchanged
     const skillBars = document.querySelectorAll('.skill-progress');
     skillBars.forEach(bar => {
@@ -413,4 +413,104 @@ window.addEventListener('load', function() {
             bar.style.width = `${width}%`;
         }, 500);
     });
+});
+
+// Function to toggle read more/read less for project descriptions
+function toggleDescription(button) {
+    const description = button.parentElement;
+    const shortText = description.querySelector('.description-short');
+    const fullText = description.querySelector('.description-full');
+
+    if (fullText.style.display === 'none') {
+        // Show full description
+        shortText.style.display = 'none';
+        fullText.style.display = 'inline';
+        button.textContent = 'Read Less';
+    } else {
+        // Show short description
+        shortText.style.display = 'inline';
+        fullText.style.display = 'none';
+        button.textContent = 'Read More';
+    }
+}
+
+// Image Popup Lightbox Functionality
+let currentImageIndex = 0;
+let allImages = [];
+
+function openImagePopup(imageElement) {
+    const popup = document.getElementById('image-popup');
+    const popupImage = document.getElementById('popup-image');
+    const container = imageElement.closest('.stacked-images');
+
+    // Get all images from the stacked container
+    allImages = Array.from(container.querySelectorAll('.stacked-image-item img'));
+    currentImageIndex = parseInt(imageElement.getAttribute('data-index'));
+
+    // Set the image source and alt
+    const clickedImage = imageElement.querySelector('img');
+    popupImage.src = clickedImage.src;
+    popupImage.alt = clickedImage.alt;
+
+    // Update counter
+    updateImageCounter();
+
+    // Show popup
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+function closeImagePopup() {
+    const popup = document.getElementById('image-popup');
+    popup.classList.remove('active');
+    document.body.style.overflow = ''; // Re-enable scrolling
+}
+
+function navigatePopupImage(direction) {
+    currentImageIndex += direction;
+
+    // Loop around if at the end or beginning
+    if (currentImageIndex >= allImages.length) {
+        currentImageIndex = 0;
+    } else if (currentImageIndex < 0) {
+        currentImageIndex = allImages.length - 1;
+    }
+
+    // Update the popup image
+    const popupImage = document.getElementById('popup-image');
+    popupImage.src = allImages[currentImageIndex].src;
+    popupImage.alt = allImages[currentImageIndex].alt;
+
+    // Update counter
+    updateImageCounter();
+}
+
+function updateImageCounter() {
+    const currentIndexElement = document.getElementById('popup-current-index');
+    const totalImagesElement = document.getElementById('popup-total-images');
+
+    currentIndexElement.textContent = currentImageIndex + 1;
+    totalImagesElement.textContent = allImages.length;
+}
+
+// Close popup when clicking outside the image
+document.addEventListener('click', function(e) {
+    const popup = document.getElementById('image-popup');
+    if (e.target === popup) {
+        closeImagePopup();
+    }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+    const popup = document.getElementById('image-popup');
+    if (popup.classList.contains('active')) {
+        if (e.key === 'Escape') {
+            closeImagePopup();
+        } else if (e.key === 'ArrowLeft') {
+            navigatePopupImage(-1);
+        } else if (e.key === 'ArrowRight') {
+            navigatePopupImage(1);
+        }
+    }
 });
