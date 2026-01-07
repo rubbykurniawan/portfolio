@@ -62,6 +62,7 @@
 
     <!-- Home Section -->
     <section id="home">
+        <!-- Enhanced Animated Background with Particles -->
         <div class="animated-background">
             <div class="particle particle1"></div>
             <div class="particle particle2"></div>
@@ -70,30 +71,82 @@
             <div class="particle particle5"></div>
         </div>
 
+        <!-- Floating Code Snippets Background -->
+        <div class="code-snippets-bg">
+            <div class="code-snippet">const developer = 'passionate';</div>
+            <div class="code-snippet">func BuildAwesome() {}</div>
+            <div class="code-snippet">SELECT * FROM skills;</div>
+            <div class="code-snippet">&lt;Backend /&gt;</div>
+        </div>
+
         <div class="container home-container">
             <div class="home-content-wrapper">
-                <div class="profile-content" data-aos="fade-right">
+                <!-- Left Side: Profile & Stats Combined -->
+                <div class="profile-section" data-aos="fade-right">
+                    <!-- Enhanced Profile Picture with Multiple Rings -->
                     <div class="profile-pic-container">
+                        <div class="profile-ring-outer"></div>
+                        <div class="profile-ring-middle"></div>
                         <div class="profile-pic-border">
                             <img src="profile-photo.jpg" alt="Rubby Kurniawan" class="profile-pic">
+                            <div class="profile-status-badge">
+                                <span class="status-dot"></span> Available
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Enhanced Social Links -->
                     <div class="profile-social-links">
                         <a href="https://www.linkedin.com/in/rubby-kurniawan-85b739155" class="profile-social-link"
-                            title="LinkedIn">
+                            title="LinkedIn" data-aos="zoom-in" data-aos-delay="100">
                             <i class="fab fa-linkedin-in"></i>
+                            <span class="social-tooltip">LinkedIn</span>
                         </a>
-                        <a href="https://github.com/" class="profile-social-link" title="GitHub">
+                        <a href="https://github.com/" class="profile-social-link" title="GitHub" data-aos="zoom-in"
+                            data-aos-delay="200">
                             <i class="fab fa-github"></i>
+                            <span class="social-tooltip">GitHub</span>
                         </a>
                         <a href="https://www.instagram.com/rubby_kurniawan_/" class="profile-social-link"
-                            title="Instagram">
+                            title="Instagram" data-aos="zoom-in" data-aos-delay="300">
                             <i class="fab fa-instagram"></i>
+                            <span class="social-tooltip">Instagram</span>
                         </a>
                     </div>
-                </div>
 
-                <div class="hero-content" data-aos="fade-left">
+                    <!-- Achievement Stats - Moved to Left -->
+                    <div class="achievement-stats-vertical" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-card-vertical">
+                            <div class="stat-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-number" data-target="5">0</h3>
+                                <p class="stat-label">Years Experience</p>
+                            </div>
+                        </div>
+                        <div class="stat-card-vertical">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-number" data-target="20">0</h3>
+                                <p class="stat-label">Projects Completed</p>
+                            </div>
+                        </div>
+                        <div class="stat-card-vertical">
+                            <div class="stat-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-number" data-target="10">0</h3>
+                                <p class="stat-label">Technologies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Side: Hero Content -->
+                <div class="hero-section" data-aos="fade-left">
                     <div class="intro-text">
                         <span class="greeting-text" id="dynamic-greeting">Hello, I'm</span>
                         <h1 class="gradient-text">Rubby Kurniawan</h1>
@@ -111,33 +164,57 @@
                         </p>
                     </div>
 
-                    <div class="cta-buttons">
-                        <a href="#contact" class="cta-btn primary-btn">
-                            <i class="fas fa-envelope"></i> Contact Me
-                        </a>
-                        <a href="#projects" class="cta-btn secondary-btn">
-                            <i class="fas fa-code"></i> View Projects
-                        </a>
-                        <!-- <a href="#" class="cta-btn outline-btn">
-                            <i class="fas fa-file-download"></i> Download CV
-                        </a> -->
+                    <!-- Tech Stack Preview -->
+                    <div class="tech-stack-preview" data-aos="fade-up" data-aos-delay="300">
+                        <p class="tech-preview-label">Tech Stack:</p>
+                        <div class="tech-icons-row">
+                            <div class="tech-icon-item" data-aos="flip-left" data-aos-delay="400">
+                                <i class="fab fa-golang"></i>
+                                <span class="tech-icon-label">Golang</span>
+                            </div>
+                            <div class="tech-icon-item" data-aos="flip-left" data-aos-delay="450">
+                                <i class="fas fa-gem"></i>
+                                <span class="tech-icon-label">Rails</span>
+                            </div>
+                            <div class="tech-icon-item" data-aos="flip-left" data-aos-delay="500">
+                                <i class="fas fa-database"></i>
+                                <span class="tech-icon-label">PostgreSQL</span>
+                            </div>
+                            <div class="tech-icon-item" data-aos="flip-left" data-aos-delay="550">
+                                <i class="fas fa-server"></i>
+                                <span class="tech-icon-label">REST API</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- <div class="tech-tags">
-                        <span class="tech-tag">Golang</span>
-                        <span class="tech-tag">Ruby on Rails</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">REST API</span>
-                    </div> -->
+                    <!-- Enhanced CTA Buttons -->
+                    <div class="cta-buttons">
+                        <a href="#contact" class="cta-btn primary-btn">
+                            <span class="btn-content">
+                                <i class="fas fa-envelope"></i>
+                                <span>Contact Me</span>
+                            </span>
+                            <span class="btn-shimmer"></span>
+                        </a>
+                        <a href="#projects" class="cta-btn secondary-btn">
+                            <span class="btn-content">
+                                <i class="fas fa-code"></i>
+                                <span>View Projects</span>
+                            </span>
+                            <span class="btn-shimmer"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <br><br><br><br><br><br>
+        <!-- Enhanced Scroll Indicator -->
         <div class="scroll-indicator">
-            <a href="#experience" class="scroll-arrow bounce">
-                <span>Explore</span>
-                <i class="fas fa-chevron-down"></i>
+            <a href="#experience" class="scroll-explore-btn">
+                <span class="scroll-text">Scroll to Explore</span>
+                <span class="scroll-icon">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
             </a>
         </div>
     </section>

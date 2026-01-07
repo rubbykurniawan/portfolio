@@ -68,6 +68,53 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
+        // Counter Animation for Achievement Stats
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.ceil(current) + '+';
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target + '+';
+                }
+            };
+
+            updateCounter();
+        }
+
+        // Intersection Observer for Stats Animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        if (!stat.classList.contains('animated')) {
+                            animateCounter(stat);
+                            stat.classList.add('animated');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe achievement stats (horizontal dan vertical)
+        const achievementStats = document.querySelector('.achievement-stats');
+        const achievementStatsVertical = document.querySelector('.achievement-stats-vertical');
+
+        if (achievementStats) {
+            statsObserver.observe(achievementStats);
+        }
+
+        if (achievementStatsVertical) {
+            statsObserver.observe(achievementStatsVertical);
+        }
+
         // Typing effect for title
         // const typedTextElement = document.querySelector('.typed-text');
         // const cursorElement = document.querySelector('.cursor');
@@ -420,24 +467,38 @@ function eraseAndSwitchProfession() {
     }, 50);
 }
 
-// Function untuk mengetik deskripsi
+// Function untuk menampilkan deskripsi dengan typing effect
 function typeDescription() {
     const descriptionElement = document.getElementById('description-text');
     if (!descriptionElement) return;
-    
+
     const descriptionText = "Passionate about building robust, scalable backend systems with clean, maintainable code. With 5+ years of experience in product-based companies, I bring technical expertise and problem-solving skills to every project.";
     let descIndex = 0;
-    
+
+    // Set placeholder dengan invisible text untuk reserve space
+    const descriptionContainer = document.querySelector('.hero-description-container');
+    if (descriptionContainer) {
+        descriptionContainer.style.minHeight = '120px';
+    }
+
     function typeChar() {
         if (descIndex < descriptionText.length) {
             descriptionElement.textContent += descriptionText.charAt(descIndex);
             descIndex++;
-            
-            const typingSpeed = Math.floor(Math.random() * 20) + 20;
+
+            const typingSpeed = Math.floor(Math.random() * 15) + 10; // Faster typing
             setTimeout(typeChar, typingSpeed);
+        } else {
+            // Sembunyikan cursor setelah selesai mengetik
+            const cursorDescription = document.querySelector('.cursor-description');
+            if (cursorDescription) {
+                setTimeout(() => {
+                    cursorDescription.style.display = 'none';
+                }, 500);
+            }
         }
     }
-    
+
     typeChar();
 }
 
@@ -457,8 +518,8 @@ window.addEventListener('load', function() {
     // Start typing animations
     setTimeout(() => {
         typeProfession();
-        setTimeout(typeDescription, 1500);
-    }, 2000);
+        setTimeout(typeDescription, 500); // Tampilkan description lebih cepat
+    }, 1500);
 
     // Existing code for skill bars - keep this unchanged
     const skillBars = document.querySelectorAll('.skill-progress');
